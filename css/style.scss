@@ -1,0 +1,423 @@
+@charset "UTF-8";
+@use 'parts/mixin' as m;
+@use 'parts/basic';
+@use 'parts/about';
+@use 'parts/products';
+@use 'parts/contact';
+
+/*--  ボタン  --*/
+.btn {
+    text-align: center;
+
+    .btn_more {
+        display: inline-block;
+        padding: 10px 25px;
+        position: relative;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 5px;
+            right: 5px;
+            background-color: #F04948;
+            z-index: -1;
+            transition: transform .2s ease-in-out;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: 1px solid #3D3E3C;
+            z-index: 3;
+        }
+
+        &:hover::before {
+            transform: translate(6px, -4px);
+        }
+    }
+}
+
+/*---  メインビジュアル  ---*/
+.mainvisual {
+    img {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: top;
+        vertical-align: bottom;
+    }
+}
+
+/*--- header ---*/
+header {
+    background-color: #FDD09D;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    .header {
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        h1 {
+            margin: 0;
+        }
+    }
+}
+
+.navi {
+    margin-left: auto;
+    overflow-x: auto;
+
+    @include m.tab {
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        z-index: 20;
+        transition: 0.5s;
+        margin: 80px 180px auto auto;
+        height: auto;
+    }
+
+    .menu {
+        display: flex;
+        align-items: flex-end;
+        margin-top: auto;
+        padding-bottom: 15px;
+        gap: 50px;
+
+        @include m.tab {
+            flex-direction: column;
+            height: auto;
+        }
+    }
+}
+
+.mask {
+    visibility: hidden;
+    position: fixed;
+    background-color: #FDD09D;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+@include m.tab {
+    .toggle_btn {
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        right: 30px;
+        top: 40px;
+        transition: all 0.5s;
+        cursor: pointer;
+        z-index: 30;
+
+        span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: #3D3E3C;
+            transition: all 0.5s;
+            position: absolute;
+            right: 0;
+
+            &:nth-child(1) {
+                top: 20%;
+            }
+
+            &:nth-child(2) {
+                top: 50%;
+            }
+
+            &:nth-child(3) {
+                top: 80%;
+            }
+        }
+    }
+}
+
+
+@include m.tab {
+    .open {
+        .toggle_btn span {
+            &:nth-child(1) {
+                transform: rotate(-45deg);
+                top: 15px;
+            }
+
+            &:nth-child(2) {
+                transform: rotate(45deg);
+                top: 15px;
+            }
+
+            &:nth-child(3) {
+                transform: rotate(45deg);
+                top: 15px;
+            }
+        }
+
+        .navi {
+            opacity: 1;
+            right: 0;
+        }
+
+        .mask {
+            visibility: visible;
+            opacity: 0.9;
+        }
+    }
+}
+
+/*---  information  ---*/
+#information {
+
+    .container {
+        padding-inline: 30px;
+    }
+
+    .info {
+        margin-top: 80px;
+        margin-bottom: 50px;
+        display: flex;
+
+        li {
+            padding-inline: 10px;
+
+            .info_link {
+                display: block;
+                background-color: #FFFFFF;
+
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                img {
+                    width: 100%;
+                    vertical-align: bottom;
+                }
+
+                .date {
+                    font-family: "Kiwi Maru", serif;
+                    font-weight: 500;
+                    display: block;
+                    margin: 20px auto 0 30px;
+                    text-align: left;
+                }
+
+                .text {
+                    display: block;
+                    margin-top: 10px;
+                    padding-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+/*---  concept ---*/
+#concept {
+    margin-top: 200px;
+    margin-bottom: 50px;
+    background-image: url(../img/concept_img.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 250px;
+    padding-bottom: 100px;
+    text-align: center;
+
+
+    .container {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        max-width: 800px;
+        margin-inline: auto;
+        background-color: #fff;
+        position: relative;
+
+        @include m.tab {
+            width: calc(100vw - 50px);
+        }
+
+        &::before {
+            content: "";
+            border-bottom: 250px solid #fff;
+            border-right: 400px solid transparent;
+            border-left: 400px solid transparent;
+            position: absolute;
+            top: -250px;
+            left: 0;
+            z-index: 0;
+
+            @include m.tab {
+                border-right: calc(50vw - 25px) solid transparent;
+                border-left: calc(50vw - 25px) solid transparent;
+            }
+        }
+
+        .text {
+            padding: 10px 20px 50px 20px;
+        }
+    }
+}
+
+/*---  Products ---*/
+#products {
+
+    .items_first {
+        margin-top: 80px;
+    }
+
+    .items {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+
+        @include m.tab {
+            flex-direction: column;
+        }
+
+        .fadein {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s;
+
+            @include m.tab {
+                margin-inline: auto;
+                margin-bottom: 50px;
+            }
+
+            a {
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                img {
+                    width: 100%;
+                    vertical-align: bottom;
+                }
+
+                .item_name {
+                    background-color: #FDD09D;
+                    text-align: right;
+                    padding: 20px 40px;
+                    border-radius: 0 0 0 50px;
+
+                    .name_jp {
+                        font-family: "Kiwi Maru", serif;
+                        font-size: 1.25rem;
+                    }
+
+                    .name_en {
+                        font-family: "Birthstone Bounce", serif;
+                        font-weight: 400;
+                        font-style: normal;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .right {
+        margin-top: 150px;
+
+        @include m.tab {
+            margin-top: 0;
+        }
+    }
+}
+
+
+/*---  Access ---*/
+#access {
+    .access_container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+        margin-inline: auto;
+        padding-inline: 10px;
+        max-width: 800px;
+
+        // @include m.tab {
+        //     flex-direction: column;
+        // }
+
+        .shop_info {
+            width: 50%;
+
+            @include m.tab {
+                margin-inline: auto;
+            }
+
+            .shop_name {
+                text-align: left;
+                padding-left: 40px;
+            }
+
+            li {
+                margin: 20px 0 0 40px;
+                text-align: left;
+
+                .right_side {
+                    padding-left: 50px;
+                }
+            }
+        }
+
+        .shop_img {
+            width: 50%;
+
+            @include m.tab {
+                display: none;
+            }
+
+            img {
+                width: 100%;
+                vertical-align: bottom;
+            }
+        }
+    }
+
+    .map {
+        margin-top: 80px;
+        margin-inline: auto;
+        padding-inline: 10px;
+        max-width: 800px;
+        height: 300px;
+
+        iframe {
+            width: 100%;
+        }
+    }
+}

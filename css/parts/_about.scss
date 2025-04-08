@@ -1,0 +1,82 @@
+@use 'mixin' as m;
+
+/*--  about  --*/
+#about {
+
+    .top {
+        margin-top: 180px;
+        height: 530px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @include m.tab {
+            height: auto;
+            position: static;
+            flex-direction: column;
+            margin-top: 150px;
+        }
+    }
+
+    .under {
+        margin-top: 100px;
+        height: 530px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        @include m.tab {
+            position: static;
+            height: auto;
+            flex-direction: column-reverse;
+            margin-top: 70px;
+        }
+    }
+
+    .left {
+        width: 55%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        @include m.tab {
+            position: static;
+            width: 90%;
+            margin-top: 30px;
+        }
+    }
+
+    .right {
+        width: 55%;
+        position: absolute;
+        top: 100px;
+        right: 0;
+
+        @include m.tab {
+            flex-direction: column-reverse;
+            position: static;
+            width: 90%;
+            margin-top: 30px;
+        }
+    }
+
+    .text {
+        background-color: #F0F3EA;
+        text-align: center;
+        padding-block: 50px;
+        z-index: 5;
+        filter: drop-shadow(4px 4px 4px rgba(134, 136, 130, 0.6));
+        border-radius: 5px;
+
+        @include m.tab {
+            p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+        vertical-align: bottom;
+    }
+}
