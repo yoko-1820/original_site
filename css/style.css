@@ -100,7 +100,7 @@ h2 {
 
 /*-- 各ページのタイトル背景 --*/
 .page_title {
-  background-image: url(../../img/concept_img.jpg);
+  background-image: url(../img/concept_img.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
