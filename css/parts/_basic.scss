@@ -1,0 +1,208 @@
+@use "mixin" as m;
+
+/*---  共通  ---*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #3d3e3c;
+  font-family: "Kiwi Maru", serif;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #3d3e3c;
+  font-family: "Kiwi Maru", serif;
+}
+
+h2 {
+  color: #3d3e3c;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.bk_color {
+  background-color: #f0f3ea;
+  margin-top: 200px;
+  padding-block: 100px;
+}
+
+/*--  セクション、各ページのタイトル  --*/
+.section_title {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &::before {
+    left: -70px;
+    background-image: url(../img/title_left.png);
+
+    @include m.tab {
+      left: -60px;
+    }
+  }
+
+  &::after {
+    right: -70px;
+    background-image: url(../img/title_right.png);
+
+    @include m.tab {
+      right: -60px;
+    }
+  }
+
+  .en {
+    font-family: "Aoboshi One", serif;
+    font-size: 2.25rem;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 4px rgb(61 62 60 / 50%);
+
+    @include m.tab {
+      font-size: 1.75rem;
+      letter-spacing: 3px;
+    }
+  }
+
+  .jp {
+    font-family: "Kiwi Maru", serif;
+    font-size: 1.25rem;
+
+    @include m.tab {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/*-- 各ページのタイトル背景 --*/
+.page_title {
+  background-image: url(original_site/img/concept_img.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include m.tab {
+    height: 200px;
+  }
+
+  .bg_white {
+    width: 400px;
+    background-color: #fff;
+    border-radius: 50px;
+    padding-block: 20px;
+
+    @include m.tab {
+      width: 350px;
+    }
+  }
+}
+
+/*-- 各ページのfooter --*/
+.footer {
+  background-color: #fdd09d;
+  text-align: center;
+  margin-top: 180px;
+}
+
+// .footer_top {}
+
+.access_conteiner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+  margin-inline: auto;
+  max-width: 600px;
+
+  @include m.tab {
+    flex-direction: column;
+  }
+
+  .shop_info {
+    width: 50%;
+
+    @include m.tab {
+      margin-inline: auto;
+      width: auto;
+    }
+
+    .shop_name {
+      text-align: left;
+      padding-left: 40px;
+
+      @include m.tab {
+        padding-left: 0;
+      }
+    }
+
+    li {
+      margin: 10px 0 0 40px;
+      text-align: left;
+
+      @include m.tab {
+        margin: 10px 0 0 0;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .right_side {
+        padding-left: 50px;
+      }
+    }
+  }
+
+  .shop_img {
+    width: 50%;
+
+    @include m.tab {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.copyright {
+  padding-top: 50px;
+  padding-bottom: 20px;
+
+  p {
+    font-size: 0.8rem;
+  }
+}
